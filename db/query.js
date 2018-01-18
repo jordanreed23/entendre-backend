@@ -1,10 +1,18 @@
 var db = require('./connection');
 
-function getUser(username){
-  // return db('cookies').where('username', username)
+function checkUser(username, id){
+  return db('users').where({
+  username: username,
+  token:  id
+});
+}
+
+function newUser(user){
+  return db('users').insert(user).returning('*');
 }
 
 
 module.exports = {
-  getUser,
+  checkUser,
+  newUser,
 };
