@@ -1,9 +1,13 @@
 var db = require('./connection');
 
-function checkUser(username, id){
+function getAll(){
+  return db('artists');
+}
+
+function checkUser(username, id, pic){
   return db('users').where({
   username: username,
-  token:  id
+  token: id
 });
 }
 
@@ -12,7 +16,10 @@ function newUser(user){
 }
 
 
+
+
 module.exports = {
   checkUser,
   newUser,
+  getAll,
 };
